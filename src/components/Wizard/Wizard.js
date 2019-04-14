@@ -1,82 +1,62 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, Route } from "react-router-dom";
+import StepOne from "./StepOne";
+import StepTwo from "./StepTwo";
+import StepThree from "./StepThree";
+// import axios from "axios";
 
 class Wizard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      zipcode: 0
-    };
-  }
+  // moved to step one component
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     name: "",
+  //     address: "",
+  //     city: "",
+  //     state: "",
+  //     zipcode: 0
+  //   };
+  // }
 
-  addHouse = () => {
-    const { name, address, city, state, zipcode } = this.state;
-    const payload = {
-      name,
-      address,
-      city,
-      state,
-      zipcode
-    };
-    axios.post("api/houses", payload).then(() => {
-      this.clearForm();
-      this.props.history.push("/");
-    });
-  };
+  // addHouse = () => {
+  //   const { name, address, city, state, zipcode } = this.state;
+  //   const payload = {
+  //     name,
+  //     address,
+  //     city,
+  //     state,
+  //     zipcode
+  //   };
+  //   axios.post("api/houses", payload).then(() => {
+  //     this.clearForm();
+  //     this.props.history.push("/");
+  //   });
+  // };
 
-  clearForm = () => {
-    this.setState({
-      name: '',
-      address: '',
-      city: '',
-      state: '',
-      zipcode: 0
-    });
-  };
+  // clearForm = () => {
+  //   this.setState({
+  //     name: '',
+  //     address: '',
+  //     city: '',
+  //     state: '',
+  //     zipcode: 0
+  //   });
+  // };
 
   render() {
-    const { name, address, city, state, zipcode } = this.state;
     return (
       <div>
-        <div className="input-info">
-          <h4>Property Name</h4>
-          <input
-            value={name}
-            onChange={e => this.setState({ name: e.target.value })}
-          />
-          <h4>Address</h4>
-          <input
-            value={address}
-            onChange={e => this.setState({ address: e.target.value })}
-          />
-          <h4>City</h4>
-          <input
-            value={city}
-            on
-            Change={e => this.setState({ city: e.target.value })}
-          />
-          <h4>State</h4>
-          <input
-            value={state}
-            on
-            Change={e => this.setState({ state: e.target.value })}
-          />
-          <h4>Zipcode</h4>
-          <input
-            value={zipcode}
-            on
-            Change={e => this.setState({ zipcode: e.target.value })}
-          />
-          <br />
-
+        <div className="top-form">
+          <h1>Add New Listing</h1>
           <Link to="/">
             <button>Cancel</button>
           </Link>
+        </div>
+
+        <div className="steps">
+          <Route path="/wizard/step1" component={StepOne} />
+          <Route path="/wizard/step2" component={StepTwo} />
+          <Route path="/wizard/step3" component={StepThree} />
         </div>
       </div>
     );

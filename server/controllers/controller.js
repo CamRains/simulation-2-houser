@@ -15,7 +15,7 @@ module.exports = {
       const db = req.app.get("db");
       const {name, address, city, state, zipcode} = req.body
 
-      db.add_house([name, address, city, state, zipcode]).then(products => {
+      db.add_house([name, address, city, state, zipcode]).then(houses => {
           res.status(200).send(houses)
       }).catch(error => {
           console.error("Error in addHouse sql",error);

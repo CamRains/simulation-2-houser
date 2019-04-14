@@ -48,7 +48,7 @@ export default class Dashboard extends Component {
       <div className="dashboard">
         <div className="top">
           <h1>Dashboard</h1>
-          <Link to="/wizard">
+          <Link to="/wizard/step1">
             <button>Add New Property</button>
           </Link>
           
